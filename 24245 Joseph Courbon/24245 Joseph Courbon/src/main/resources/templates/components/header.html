@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - AUCA</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i&amp;display=swap">
+    <link rel="stylesheet" th:href="@{/fonts/simple-line-icons.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+    <!-- Embed the Google Translate code snippet here -->
+    <script type="text/javascript">
+
+    </script>
+<!--    <link rel="stylesheet" th:href="">-->
+    <style>
+
+         body {
+            background-image: url('image/img6.jpg');
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        .header {
+            background-color: #3b3ae3;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            gap: 10px;
+        }
+
+        .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .navbar-nav {
+            text-align: center;
+            margin-right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%; /* Adjust the width as needed */
+        }
+
+        .navbar-nav a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #3b3ae3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            animation: slideIn 2s;
+        }
+
+        .navbar-nav a:hover {
+            background-color: #555;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+<body>
+<div class="header">
+    <div class="logo">
+        <img src="image/img7.png" alt="AUCA Logo">
+        <p>Adventist University Of Central Africa</p>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{/academic_unit}">Academic Unit</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/all_semesters}">Semester</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/all_teachers}">Teacher</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/all_courseDefinitions}">Course definition</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Manage Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="">registration requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Student courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="">List</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/all_students}">Students List</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Student registration</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Logout</a></li>
+        </ul>
+
+
+    </div>
+</div>
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container">
+        <a class="navbar-brand logo" th:href="@{/}">AUCA</a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+            <span class="visually-hidden">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+<!--<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">-->
+<!--    <div class="container"><a class="navbar-brand logo" th:href="@{/}">AUCA</a><button data-bs-toggle="collapse"-->
+<!--                                                                                       class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle-->
+<!--                    navigation</span><span class="navbar-toggler-icon"></span></button>-->
+
+
+
+
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/academic_unit}">Academic Unit</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/all_semesters}">Semester</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/all_teachers}">Teacher</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/all_courseDefinitions}">Course definition</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">Manage Courses</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">registration requests</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">Student courses</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">List</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/all_students}">Students List</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">Student registration</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="">Logout</a></li>-->
+<!--            </ul>-->
+        </div>
+    </div>
+</nav>

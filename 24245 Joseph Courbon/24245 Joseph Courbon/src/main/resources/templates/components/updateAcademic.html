@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUCA - Update Academic Unit</title>
+  <link rel="stylesheet" href="path/to/your/external/css/file.css">
+  <!-- Add any other external dependencies as needed -->
+
+  <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            background-image: url('your-background-image.jpg'); /* Add your background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #fff; /* Text color for better contrast */
+        }
+
+        .contact-us-page {
+            padding: 60px 0;
+        }
+
+        .clean-form {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .clean-form h2 {
+            color: #17a2b8; /* Bootstrap primary color */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            color: #17a2b8;
+        }
+
+        form input,
+        form select {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%; /* Make the input fields full-width */
+        }
+
+        form button {
+            background-color: #17a2b8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0a6a82; /* Darker shade on hover */
+        }
+
+        .form-label {
+            color: #dc3545; /* Red color for form labels */
+        }
+    </style>
+</head>
+<body>
+<th:block th:include="/components/header"></th:block>
+
+<main class="page contact-us-page">
+  <section class="clean-block clean-form dark">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">AUCA - Update Academic Unit</h2>
+        <!-- Other headings and descriptions as needed -->
+      </div>
+      <!-- Update Academic Unit Form -->
+      <form role="form" method="post" th:action="@{/academic_unit/update/{id}(id=${academicUnit.acc_id})}" th:object="${academicUnit}">
+        <!-- Include form fields as needed -->
+        <div class="mb-3">
+          <label class="form-label" for="code">Code</label>
+          <input class="form-control" type="text" id="code" name="code" th:field="*{acc_code}" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-control" type="text" id="name" name="name" th:field="*{name}" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="unit">Unit</label>
+          <select class="form-control" id="unit" name="unit" th:field="*{unit}">
+            <option value="PROGRAMME">PROGRAMME</option>
+            <option value="FACULTY">FACULTY</option>
+            <option value="DEPARTMENT">DEPARTMENT</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <button class="btn btn-primary" type="submit" id="updateUnit">Update</button>
+          <span class="form-label" id="error-msg"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- Add your scripts, including JavaScript for form validation if needed -->
+<script>
+        // Add your JavaScript code here if needed
+    </script>
+</body>
+</html>

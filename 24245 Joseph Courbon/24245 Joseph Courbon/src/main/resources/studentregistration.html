@@ -1,0 +1,100 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/components/header"></th:block>
+
+<body>
+<main class="page contact-us-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">AUCA - Start registration</h2>
+                <p>You can start registration here.</p>
+                <span class="form-label text-success" id="success-msg">${success}</span>
+            </div>
+            <form role="form" method="post" th:action="@{/studentRegistrations/new}" th:object="${studentRegistration}">
+                <div class="row mb-3">
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="studentRegNo">Student Reg. No</label>
+                        <input class="form-control" type="text" id="studentRegNo" name="studentRegNo" value="<%= session.getAttribute("regNo").toString() %>" readonly required>
+                    </div>
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="acc_unit">Academic Unit</label>
+                        <select class="form-control" id="acc_unit" name="acc_unit" required>
+                            <%
+                            CourseService courseDropAccUnitInt = new CourseServiceImpl();
+                            List<Object[]> courseDropAccUnits = courseDropAccUnitInt.getAcademicUnits();
+                            for(Object[] obj : courseDropAccUnits) {
+                            String id = String.valueOf(obj[0]);
+                            String name = String.valueOf(obj[1]);
+                            %>
+                            <option value="<%= id %>"><%= name %></option>
+                            <%
+                            }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="semesterId">Semester</label>
+                        <select class="form-control" id="semesterId" name="semesterId" required>
+                            <%
+                            StudentRegistrationService studentRegistrationService1 = new StudentRegistrationServiceImpl();
+                            List<Object[]> semesterDropList= studentRegistrationService1.getAllSemesters();
+                            for(Object[] obj : semesterDropList) {
+                            String id = String.valueOf(obj[0]);
+                            String sem_code = String.valueOf(obj[1]);
+                            String sem_name = String.valueOf(obj[2]);
+                            String sem_start_date = String.valueOf(obj[3]);
+                            String sem_reg_date = String.valueOf(obj[4]);
+                            %>
+                            <option value="<%= id %>"><%= sem_code +" - "+ sem_name + ". from " + sem_start_date + " to " + sem_reg_date%></option>
+                            <%
+                            }
+                            %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <button class="btn btn-primary" type="submit" id="createUnit">Send Request</button>
+                    <span class="form-label text-danger" id="error-msg">${error}</span>
+                </div>
+            </form>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" hidden="true">ID</th>
+                                <th scope="col">Your  Reg. No</th>
+                                <th scope="col">Your Name</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                            StudentRegistrationService studentRegistrationService2 = new StudentRegistrationServiceImpl();
+                            List<Object[]> studRegs = studentRegistrationService2.getStudents(session.getAttribute("regNo").toString());
+                            for(Object[] studReg : studRegs) {
+                            %>
+                            <tr>
+                                <td hidden="true"><%= studReg[0] %></td>
+                                <td><%= studReg[1] %></td>
+                                <td><%= studReg[2] %></td>
+                                <td><%= studReg[3] %></td>
+                            </tr>
+                            <%
+                            }
+                            %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

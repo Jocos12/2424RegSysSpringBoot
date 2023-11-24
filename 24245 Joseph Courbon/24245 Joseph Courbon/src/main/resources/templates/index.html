@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/components/header"></th:block>
+<!-- Add your external stylesheets or CDN links here if needed -->
+<link rel="stylesheet" href="path/to/your/external/css/file.css">
+
+<style>
+        body {
+        background-color:black;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        .clean-hero {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .custom-background {
+            background-image: url('path/to/your/image.jpg'); /* Replace with your image path */
+        }
+
+        .text {
+            max-width: 600px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-outline-light {
+            color: #3823d9;
+            border-color: #fff;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-fill-mode: both;
+        }
+
+        .fadeInUp {
+            animation: fadeInUp 1s ease;
+        }
+    </style>
+
+
+<body>
+<main class="page landing-page">
+    <section class="clean-block clean-hero custom-background">
+        <div class="text">
+            <h2>Adventist University of Central Africa</h2>
+            <p>Best university receiving international students and providing quality education to prepare for real-world problems.</p>
+            <button class="btn btn-outline-light btn-lg" type="button">Learn More</button>
+        </div>
+    </section>
+</main>
+
+<script>
+        function animateButtonClick() {
+            var button = document.querySelector('.btn-outline-light');
+            button.classList.add('animated', 'fadeInUp');
+            // You can add more logic or remove the class after the animation completes
+        }
+    </script>
+</body>
+</html>

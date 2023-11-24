@@ -1,0 +1,164 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/components/header"></th:block>
+
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background-color: #3e5d7d; /* Light gray background color */
+        }
+
+        main {
+            width: 100%;
+        }
+
+        .clean-form {
+            background-color: #e9ecef; /* Light gray form background color */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+            max-width: 800px;
+            margin: 50px auto; /* Center the form */
+        }
+
+        .block-heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background-color: #d4edda; /* Light green success background color */
+            color: #155724;
+            border-color: #c3e6cb;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ced4da; /* Light gray border color */
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff; /* Blue border color on focus */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue button color */
+            color: #fff;
+            border: 1px solid #007bff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .btn-primary:active {
+            background-color: #00264d; /* Even darker blue on click */
+        }
+
+        .card {
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            text-align: left;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+
+<body>
+<main class="page contact-us-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">AUCA - Create Student</h2>
+                <p>You can create Student</p>
+                <span class="form-label text-success" id="success-msg"></span>
+                <div th:if="${param.success}" class="alert alert-success">
+                    Accounted created successfully!
+                </div>
+            </div>
+            <form role="form" method="post" th:action="@{/students/new}" th:object="${student}">
+                <div class="row mb-3">
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="regNo">Student Reg. No</label>
+                        <input class="form-control" type="text" id="regNo" name="regNo" th:field="*{regNo}" required>
+                    </div>
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="fullName">Student Full Name</label>
+                        <input class="form-control" type="text" id="fullName" name="fullName" th:field="*{fullName}" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="mb-3 col-xl">
+                        <label class="form-label" for="dateOfBirth">Date of Birth</label>
+                        <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}" required>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <button class="btn btn-primary" type="submit" id="createStudent">Create Student</button>
+                    <span class="form-label text-danger" id="error-msg"></span>
+                </div>
+            </form>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" hidden="true">ID</th>
+                                <th scope="col">Student Reg. No</th>
+                                <th scope="col">Student Fullname</th>
+                                <th scope="col">Date of Birth</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="stud :${studentsList}">
+                                <td hidden="true" th:text="${stud.stud_id}"></td>
+                                <td th:text="${stud.regNo}"></td>
+                                <td th:text="${stud.fullName}"></td>
+                                <td th:text="${stud.dateOfBirth}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
